@@ -21,13 +21,10 @@ class Base64ImageField(serializers.ImageField):
 def create_ingredients(ingredients, recipe):
     ingredient_list = []
     for ingredient in ingredients:
-        current_ingredient = get_object_or_404(Ingredient,
-                                               id=ingredient.get('id'))
         amount = ingredient.get('amount')
         ingredient_list.append(
             RecipeIngredient(
                 recipe=recipe,
-                ingredient=current_ingredient,
                 amount=amount
             )
         )

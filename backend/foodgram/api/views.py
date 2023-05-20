@@ -91,11 +91,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if request.method == 'POST':
             return create_model_instance(request, recipe, FavoriteSerializer)
 
-        if request.method == 'DELETE':
-            error_message = 'У вас нет этого рецепта в избранном'
-            return delete_model_instance(request, Favorite,
-                                         recipe, error_message)
-
     @action(
         detail=True,
         methods=['post', 'delete'],
@@ -106,11 +101,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if request.method == 'POST':
             return create_model_instance(request, recipe,
                                          ShoppingCartSerializer)
-
-        if request.method == 'DELETE':
-            error_message = 'У вас нет этого рецепта в списке покупок'
-            return delete_model_instance(request, ShoppingCart,
-                                         recipe, error_message)
 
     @action(
         detail=False,
