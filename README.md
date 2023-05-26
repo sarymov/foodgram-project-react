@@ -5,7 +5,7 @@
 
 Проект запущен по адресу: http://158.160.104.184
 
-Админка
+Админкаа
 Login: admin
 Password: admin
 mail: admin@mail.com
