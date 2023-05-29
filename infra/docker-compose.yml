@@ -23,6 +23,8 @@ services:
     image: sarymov/frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
+    depends_on:
+      - web
 
 
   nginx:
@@ -34,12 +36,15 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./foodgramproject.crt:/etc/nginx/foodgramproject.crt
       - ./foodgramproject.key:/etc/nginx/foodgramproject.key
+      - ../docs/:/usr/share/nginx/html/api/docs
       - ../frontend/build:/usr/share/nginx/html/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
 
     depends_on:
       - web
+      - frontend
+    restart: always
 
 volumes:
   static_value:
